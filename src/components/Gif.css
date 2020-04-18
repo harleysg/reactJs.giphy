@@ -1,0 +1,29 @@
+.gif-card {
+	position: relative;
+}
+
+.gif-card_figure {
+	max-width: 100%;
+	overflow: hidden;
+	margin: 0;
+	max-height: 30vh;
+}
+.gif-card_image {
+	max-width: 100%;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gif-card_description {
+	position: absolute;
+	width: 100%;
+	top: auto;
+	bottom: 0;
+	padding: 0 0.2em 0.5em;
+}
+
+.gif-card_title,
+.gif-card_sub-title {
+	margin: 0;
+}
