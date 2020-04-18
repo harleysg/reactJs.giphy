@@ -1,0 +1,16 @@
+.gif-search_field {
+	display: flex;
+	align-items: center;
+}
+.gif-search_form {
+	display: inline-grid;
+	grid-template-columns: 1fr;
+	margin-right: auto;
+}
+.gif-search_input {
+	display: block;
+	min-height: 2.5rem;
+	width: 100%;
+	max-width: 300px;
+	font-size: inherit;
+}
