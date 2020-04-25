@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { Switch, Route } from "wouter";
+
+import { GifListRoute, GifDetailRouter, NotFound } from "./routes/index.js";
+
 import "./App.css";
-import Header from "./components/Header.js";
-import GifList from "./components/GIfList.js";
 
 export default function App() {
-	const [keyWord, setkeyWord] = useState("morty");
 	return (
 		<div className="App">
-			<Header handleOutput={setkeyWord} />
-			<div className="App-wrapper">
-				<GifList keyWord={keyWord} />
-			</div>
+			<Switch>
+				<Route component={GifListRoute} path="/" />
+				<Route component={GifDetailRouter} path="/:ID" />
+				<Route component={NotFound} path="/:rest*" />
+			</Switch>
 		</div>
 	);
 }
