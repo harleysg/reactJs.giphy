@@ -1,0 +1,23 @@
+.gif-filter_field {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	position: relative;
+
+	background-color: white;
+	color: black;
+}
+.gif-filter_field::before {
+	content: "Limit: ";
+	position: absolute;
+	left: 0;
+}
+
+.gif-filter_field select {
+	border: none;
+	min-height: 2rem;
+	width: 100%;
+	text-align: right;
+	padding-left: 3rem;
+}
