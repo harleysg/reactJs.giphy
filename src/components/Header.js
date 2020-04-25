@@ -1,16 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
-import "./Header.css";
-import Search from "./Search.js";
 
-export default function Header({ handleOutput }) {
+import "./Header.css";
+
+export default function Header({ children }) {
 	return (
 		<header className="App-header">
-			<Search handleOutput={handleOutput} />
+			<div className="App-wrapper App-header_wrapper">{children}</div>
 		</header>
 	);
 }
-
-Header.propTypes = {
-	handleOutput: PropTypes.func.isRequired,
-};
