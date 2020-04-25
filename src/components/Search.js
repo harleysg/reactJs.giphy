@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
+import { REGEX_TERM, DEFAULT_SEARCH_TERM } from "../shared/index.js";
+
 import "./Search.css";
 
 export default function Search({ handleOutput }) {
 	const [value, sendValue] = useState("");
-	const [searched, resetSearch] = useState("");
-	const regx = new RegExp("^([a-zA-Z0-9]{4,})$");
+	const [searched, resetSearch] = useState(DEFAULT_SEARCH_TERM);
+	const regx = new RegExp(REGEX_TERM);
 
-	function handleChange(e) {
+	function handleSeachChange(e) {
 		sendValue(e.target.value);
 		resetSearch("");
 	}
+
 	function handleForm(e) {
 		e.preventDefault();
 		if (regx.test(value)) {
@@ -30,15 +34,15 @@ export default function Search({ handleOutput }) {
 						type="search"
 						value={value}
 						placeholder="Search all the GIFs and Stickers + Enter"
-						onChange={handleChange}
+						onChange={handleSeachChange}
 					/>
 				</label>
+				{searched && (
+					<span className="gif-searched">
+						Results of: <strong>{searched}</strong>
+					</span>
+				)}
 			</form>
-			{searched && (
-				<span className="gif-searched">
-					Results of: <strong>{searched}</strong>
-				</span>
-			)}
 		</div>
 	);
 }

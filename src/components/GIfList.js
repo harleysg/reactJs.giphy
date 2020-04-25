@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import getGifsService from "../service/index.js";
+import { getGifsByKeyWord } from "../service/index.js";
 import { Gif } from "./Gif.js";
 
 import "./GifList.css";
 
 export default function GifList({ keyWord }) {
 	const [gifs, setGifs] = useState([]);
+
 	useEffect(
 		function () {
-			getGifsService({ keyWord }).then((gifs) => setGifs(gifs));
+			getGifsByKeyWord({ keyWord }).then((gifs) => setGifs(gifs));
 		},
 		[keyWord]
 	);
