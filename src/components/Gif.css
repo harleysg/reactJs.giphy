@@ -1,5 +1,7 @@
 .gif-card {
 	position: relative;
+	color: inherit;
+	display: grid;
 }
 
 .gif-card_figure {
