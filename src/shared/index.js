@@ -1,13 +1,18 @@
 // Giphy API Key - Get yours at https://developers.giphy.com/dashboard/
 export const API_KEY = "PZU49dYdw6JjhmwHgp9qljnChyuRF8hV";
 
+export const APP_CONTEXT = {
+	name: "reactGiphy ❤️",
+	author: "Harley Santos Garzón",
+};
+
 // URL for giphy search API
 export const API_URL = "https://api.giphy.com/v1/gifs/";
 export const API_SEARCH_URL = `${API_URL}search`;
 export const API_ID_URL = API_URL;
 
 // Initial search values
-export const DEFAULT_SEARCH_TERM = "cats";
+export const DEFAULT_SEARCH_TERM = "";
 export const REGEX_TERM = "([a-zA-Z0-9]{2,})";
 export const DEFAULT_SEARCH_LIMIT = 25;
 export const DEFAULT_SEARCH_OFFSET = 0;
