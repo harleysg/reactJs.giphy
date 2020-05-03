@@ -66,8 +66,7 @@ Content
 /*--------------------
 Image
 --------------------*/
-.c-notFound_img,
-img {
+.c-notFound_img {
 	position: absolute;
 	top: 0;
 	left: 0;
