@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 
 import { REGEX_TERM, DEFAULT_SEARCH_TERM } from "../shared/index.js";
+
+import GifsContext from "./../context/gifs.context";
 
 import "./Search.css";
 
 export default function Search({ handleOutput }) {
 	const [value, sendValue] = useState("");
+	const { keyWord, setKeyWord } = useContext(GifsContext);
 	const [searched, resetSearch] = useState(DEFAULT_SEARCH_TERM);
 	const regx = new RegExp(REGEX_TERM);
 
@@ -20,13 +23,14 @@ export default function Search({ handleOutput }) {
 		if (regx.test(value)) {
 			handleOutput(value);
 			resetSearch(value);
+			setKeyWord(value);
 			sendValue("");
 		} else {
 			console.log(`${value} isn´t validate`);
 		}
 	}
 	return (
-		<div className="gif-search_field">
+		<div className="gif-search">
 			<form onSubmit={handleForm} className="gif-search_form">
 				<label className="gif-search_field">
 					<input
@@ -37,11 +41,15 @@ export default function Search({ handleOutput }) {
 						onChange={handleSeachChange}
 					/>
 				</label>
-				{searched && (
-					<span className="gif-searched">
-						Results of: <strong>{searched}</strong>
-					</span>
-				)}
+				<span className="gif-searched">
+					{keyWord && (
+						<>
+							{" "}
+							Results of:
+							<strong>{searched || keyWord}</strong>
+						</>
+					)}
+				</span>
 			</form>
 		</div>
 	);
