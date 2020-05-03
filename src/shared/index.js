@@ -1,5 +1,5 @@
 // Giphy API Key - Get yours at https://developers.giphy.com/dashboard/
-export const API_KEY = "PZU49dYdw6JjhmwHgp9qljnChyuRF8hV";
+export const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
 
 export const APP_CONTEXT = {
 	name: "reactGiphy ❤️",
