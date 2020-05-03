@@ -1,18 +1,20 @@
 import React from "react";
-import { Switch, Route } from "wouter";
 
-import { GifListRoute, GifDetailRouter, NotFound } from "./routes/index.js";
+import Routes from "./pages/index.js";
 
 import "./App.css";
+import { GifsContextProvider } from "./context/gifs.context.js";
+import { AppContextProvider } from "./context/app.context.js";
+import { APP_CONTEXT } from "./shared/index.js";
 
 export default function App() {
 	return (
-		<div className="App">
-			<Switch>
-				<Route component={GifListRoute} path="/" />
-				<Route component={GifDetailRouter} path="/:ID" />
-				<Route component={NotFound} path="/:rest*" />
-			</Switch>
-		</div>
+		<AppContextProvider value={APP_CONTEXT}>
+			<div className={"App"}>
+				<GifsContextProvider>
+					<Routes />
+				</GifsContextProvider>
+			</div>
+		</AppContextProvider>
 	);
 }
