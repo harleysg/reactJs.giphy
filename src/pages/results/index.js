@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "wouter";
+import React, { useState } from "react";
+import { Link, useLocation } from "wouter";
 
 import Header from "../../components/Header.js";
 import Search from "../../components/Search.js";
@@ -10,12 +10,19 @@ import { useGifs } from "../../hooks/index.js";
 export default function GifResultPage({ params }) {
 	const { KEYWORD } = params;
 	const { loading, gifs } = useGifs({ keyWord: KEYWORD });
+	const [, setkeyWord] = useState(KEYWORD);
+	const [, pushLocation] = useLocation();
+
+	function handleFilterChange(value) {
+		setkeyWord(value);
+		pushLocation(`/search/${value}`);
+	}
 
 	return (
 		<>
 			<Header>
 				<div className="App-header_block">
-					<Search handleOutput={() => {}} />
+					<Search handleOutput={handleFilterChange} />
 				</div>
 				<div className="App-header_block">
 					<Link to="/">Return</Link>
