@@ -8,8 +8,12 @@
 	--fz: 16px;
 	--theme-body-bg: white;
 	--theme-body-txt: #282c34;
-	--theme-body-bg-dark: #282c34;
+	--theme-body-bg-dark: #13121d;
 	--theme-body-txt-dark: #f3f3f3;
+
+	--theme-header-bg: #24162e;
+	--theme-header-txt: #f3f3f3;
+
 	--zIndex-header: 20;
 	--zIndex-component: 5;
 }

@@ -8,3 +8,17 @@
 	margin: 0 auto;
 	padding: 0 0.5em;
 }
+
+.App-home {
+	display: grid;
+}
+
+.o-brand img {
+    max-width: 3.5rem;
+}
+
+.o-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

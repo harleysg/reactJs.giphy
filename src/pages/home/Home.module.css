@@ -1,0 +1,32 @@
+.foo {
+	position: sticky;
+	top: calc(var(--height-header) * 1.2);
+	max-width: 300px;
+	float: left;
+	padding-right: 1rem;
+}
+
+.baz {
+	width: 100%;
+	max-width: calc(100% - 300px);
+	float: right;
+	min-height: 170vh;
+}
+
+@media screen and (max-width: 60rem) {
+    .App-home_wrapper {
+		display: flex;
+		flex-direction: column;
+    }
+    
+	.foo {
+		order: 1;
+		max-width: 100%;
+		position: static;
+	}
+
+	.baz {
+		width: 100%;
+		max-width: 100%;
+	}
+}
