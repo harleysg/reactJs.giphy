@@ -7,9 +7,8 @@ export const APP_CONTEXT = {
 };
 
 // URL for giphy search API
-export const API_URL = "https://api.giphy.com/v1/gifs/";
-export const API_SEARCH_URL = `${API_URL}search`;
-export const API_ID_URL = API_URL;
+export const API_URL = "https://api.giphy.com/v1";
+export const API_SEARCH_URL = `${API_URL}/gifs/search`;
 
 // Initial search values
 export const DEFAULT_SEARCH_TERM = "";
@@ -28,8 +27,11 @@ export function URL_GIFs_KEYWORD({
 	limit = LIMIT_MEDIUM,
 	offset = DEFAULT_SEARCH_OFFSET,
 }) {
-	return `${API_SEARCH_URL}?api_key=${API_KEY}&q=${keyWord}&limit=${limit}&offset=${offset}&rating=G&lang=en`;
+	return `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyWord}&limit=${limit}&offset=${offset}&rating=G&lang=en`;
 }
 export function URL_GIFs_ID({ ID }) {
-	return `${API_ID_URL}${ID}?api_key=${API_KEY}`;
+	return `${API_URL}/${ID}?api_key=${API_KEY}`;
+}
+export function URL_TRANDINGS() {
+	return `${API_URL}/trending/searches`;
 }
