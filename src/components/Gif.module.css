@@ -3,6 +3,21 @@
 	color: inherit;
 	display: grid;
 }
+.gif-card:nth-child(5n + 1) {
+	background-color: var(--brand-color_1);
+}
+.gif-card:nth-child(5n + 2) {
+	background-color: var(--brand-color_2);
+}
+.gif-card:nth-child(5n + 3) {
+	background-color: var(--brand-color_3);
+}
+.gif-card:nth-child(5n + 4) {
+	background-color: var(--brand-color_4);
+}
+.gif-card:nth-child(5n + 5) {
+	background-color: var(--brand-color_5);
+}
 .gif-card:nth-child(11n) {
 	/* opacity: 0.1; */
 	grid-column-end: span 2;
