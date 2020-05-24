@@ -16,6 +16,12 @@
 
 	--zIndex-header: 20;
 	--zIndex-component: 5;
+
+	--brand-color_1: #00ff99;
+	--brand-color_2: #00ccff;
+	--brand-color_3: #9933ff;
+	--brand-color_4: #9933ff;
+	--brand-color_5: #fff35c;
 }
 
 html {
@@ -51,4 +57,51 @@ h6 {
 body[data-theme="dark"] {
 	--theme-body-bg: var(--theme-body-bg-dark);
 	--theme-body-txt: var(--theme-body-txt-dark);
+}
+
+@keyframes bouncer {
+	100% {
+		transform: scale(1.75) translateY(-20px);
+	}
+}
+
+.c-loading {
+	display: flex;
+	align-items: center;
+	height: 37px;
+	padding-top: 15px;
+	text-align: center;
+	justify-content: center;
+	margin: 0px auto;
+}
+
+.c-loading div {
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	position: relative;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px;
+	margin: 37px 10px 10px;
+	animation: 0.75s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite
+		alternate none running bouncer;
+}
+
+.c-loading div:nth-child(5n + 1) {
+	background-color: var(--brand-color_1);
+}
+.c-loading div:nth-child(5n + 2) {
+	animation-delay: calc(0.1s);
+	background-color: var(--brand-color_2);
+}
+.c-loading div:nth-child(5n + 3) {
+	animation-delay: calc(0.2s);
+	background-color: var(--brand-color_3);
+}
+.c-loading div:nth-child(5n + 4) {
+	animation-delay: calc(0.2s);
+	background-color: var(--brand-color_4);
+}
+.c-loading div:nth-child(5n + 5) {
+	animation-delay: calc(0.4s);
+	background-color: var(--brand-color_5);
 }
