@@ -1,10 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import useNearScreen from "hooks/useNearScreen";
-import { TrendingSearches } from "./TrendingSearches";
+
+const TrendingSearches = React.lazy(() => import("./TrendingSearches"));
 
 export default function LadyTrends() {
 	const { isNearScreen, fromRef } = useNearScreen();
 	return (
-		<div ref={fromRef}>{isNearScreen ? <TrendingSearches /> : null}</div>
+		<Suspense fallback={false}>
+			<div ref={fromRef}>
+				{isNearScreen ? <TrendingSearches /> : null}
+			</div>
+		</Suspense>
 	);
 }
