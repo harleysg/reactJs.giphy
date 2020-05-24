@@ -15,7 +15,7 @@ export async function getGifsByKeyWord({
 	const resAPI = await FetchAPI.json();
 	const { data = [] } = resAPI;
 	const filtered = data.map((image) => ({
-		url: image.images.preview_gif.url,
+		url: image.images.preview_webp.url,
 		title: image.title,
 		id: image.id,
 	}));
