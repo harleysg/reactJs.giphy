@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { getGifsByKeyWord } from "../service/index.js";
-import GifsContext from "../context/gifs.context";
+import { getGifsByKeyWord } from "service/index.js";
+import GifsContext from "context/gifs.context";
 
 export default function useGifs({ keyWord } = { keyWord: null }) {
 	const [loading, setLoading] = useState(false);

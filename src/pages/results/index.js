@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 
-import Header from "../../components/Header.js";
-import Search from "../../components/Search.js";
-import GifList from "../../components/GIfList.js";
+import Header from "components/Header.js";
+import Search from "components/Search.js";
+import GifList from "components/GIfList.js";
 
-import { useGifs } from "../../hooks/index.js";
+import { useGifs } from "hooks/index.js";
 
 export default function GifResultPage({ params }) {
 	const { KEYWORD } = params;

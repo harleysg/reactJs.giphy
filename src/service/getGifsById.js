@@ -1,4 +1,4 @@
-import { URL_GIFs_ID } from "../shared/index.js";
+import { URL_GIFs_ID } from "shared/index.js";
 
 export async function getGifsById({ ID }) {
 	const URLAPI = URL_GIFs_ID({ ID });

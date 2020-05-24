@@ -3,7 +3,7 @@ import {
 	DEFAULT_SEARCH_LIMIT,
 	DEFAULT_SEARCH_OFFSET,
 	URL_GIFs_KEYWORD,
-} from "../shared/index.js";
+} from "shared/index.js";
 
 export async function getGifsByKeyWord({
 	keyWord = DEFAULT_SEARCH_TERM,

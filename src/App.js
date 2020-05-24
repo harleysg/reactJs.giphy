@@ -1,11 +1,11 @@
 import React from "react";
 
-import Routes from "./pages/index.js";
+import Routes from "pages/index.js";
 
 import "./App.css";
-import { GifsContextProvider } from "./context/gifs.context.js";
-import { AppContextProvider } from "./context/app.context.js";
-import { APP_CONTEXT } from "./shared/index.js";
+import { GifsContextProvider } from "context/gifs.context.js";
+import { AppContextProvider } from "context/app.context.js";
+import { APP_CONTEXT } from "shared/index.js";
 
 export default function App() {
 	return (

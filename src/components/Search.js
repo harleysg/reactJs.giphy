@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 
-import { REGEX_TERM, DEFAULT_SEARCH_TERM } from "../shared/index.js";
+import { REGEX_TERM, DEFAULT_SEARCH_TERM } from "shared/index.js";
 
-import GifsContext from "./../context/gifs.context";
+import GifsContext from "context/gifs.context";
 
 import "./Search.css";
 

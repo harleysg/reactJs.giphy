@@ -1,6 +1,6 @@
 import React from "react";
 import "./Limit.css";
-import { LIMITS, LIMIT_MEDIUM } from "../shared/index.js";
+import { LIMITS, LIMIT_MEDIUM } from "shared/index.js";
 
 export default function LimitGifs({ outputLimit = () => {} }) {
 	function emitChange(e) {

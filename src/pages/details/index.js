@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "wouter";
 
-import Header from "../../components/Header.js";
-import Gif from "../../components/Gif.js";
+import Header from "components/Header.js";
+import Gif from "components/Gif.js";
 
 import { useGlobalGifs } from "hooks/useGlobalGifs";
 
