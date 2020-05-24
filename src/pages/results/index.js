@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 
 import Header from "components/Header.js";
 import Search from "components/Search.js";
-import GifList from "components/GIfList.js";
+import GifList from "components/GifList.js";
 
 import { useGifs } from "hooks/index.js";
 
