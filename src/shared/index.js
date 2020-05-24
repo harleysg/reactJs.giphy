@@ -33,5 +33,5 @@ export function URL_GIFs_ID({ ID }) {
 	return `${API_URL}/${ID}?api_key=${API_KEY}`;
 }
 export function URL_TRANDINGS() {
-	return `${API_URL}/trending/searches`;
+	return `${API_URL}/trending/searches?api_key=${API_KEY}`;
 }
