@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 
 import Header from "../../components/Header.js";
@@ -10,12 +10,15 @@ import { useGifs } from "../../hooks/index.js";
 export default function GifResultPage({ params }) {
 	const { KEYWORD } = params;
 	const { loading, gifs } = useGifs({ keyWord: KEYWORD });
-	const [, setkeyWord] = useState(KEYWORD);
+	const [newWord, setkeyWord] = useState(KEYWORD);
 	const [, pushLocation] = useLocation();
 
+	useEffect(() => {
+		newWord !== KEYWORD && pushLocation(`/search/${newWord}`);
+	}, [KEYWORD, newWord, pushLocation]);
+	
 	function handleFilterChange(value) {
 		setkeyWord(value);
-		pushLocation(`/search/${value}`);
 	}
 
 	return (
