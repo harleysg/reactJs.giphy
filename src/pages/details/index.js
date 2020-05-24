@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "wouter";
 
 import Header from "../../components/Header.js";
 import Gif from "../../components/Gif.js";
 
-import GisfContext from "./../../context/gifs.context.js";
+import { useGlobalGifs } from "hooks/useGlobalGifs";
+
 
 export default function GifDetailPage({ params }) {
 	const { ID } = params;
-	const { gifs, keyWord } = useContext(GisfContext);
+	const { gifs, keyWord } = useGlobalGifs();
+
 	const GetGifById = gifs.find((gif) => gif.id === ID);
 	return (
 		<>
