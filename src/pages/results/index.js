@@ -3,7 +3,8 @@ import { Link, useLocation } from "wouter";
 
 import Header from "components/Header.js";
 import Search from "components/Search.js";
-import GifList from "components/GifList.js";
+import GifList, { GifListSkeleton } from "components/GifList.js";
+import Spinner from "components/Spinner";
 
 import { useGifs } from "hooks/index.js";
 
@@ -16,7 +17,7 @@ export default function GifResultPage({ params }) {
 	useEffect(() => {
 		newWord !== KEYWORD && pushLocation(`/search/${newWord}`);
 	}, [KEYWORD, newWord, pushLocation]);
-	
+
 	function handleFilterChange(value) {
 		setkeyWord(value);
 	}
@@ -32,8 +33,21 @@ export default function GifResultPage({ params }) {
 				</div>
 			</Header>
 			<div className="App-wrapper">
-				{loading ? <span>loading...</span> : <GifList gifs={gifs} />}
+				{<LoadGids isLoading={loading} gifs={gifs} />}
 			</div>
 		</>
 	);
+}
+
+function LoadGids({ isLoading = false, gifs }) {
+	if (isLoading) {
+		return (
+			<>
+				<Spinner />
+				<GifListSkeleton />
+			</>
+		);
+	} else {
+		return <GifList gifs={gifs} />;
+	}
 }

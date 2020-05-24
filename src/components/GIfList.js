@@ -12,3 +12,24 @@ export default function GifList({ gifs }) {
 		</div>
 	);
 }
+
+export function GifListSkeleton() {
+	function setId() {
+		const arrayOpts = new Uint32Array(30);
+		crypto.getRandomValues(arrayOpts);
+
+		return `_${arrayOpts[0]}`;
+	}
+	return (
+		<div className="gif-grid">
+			{"12345432123454321234543212345".split("").map((e, i) => (
+				<div
+					className="gif-card"
+					style={{ backgroundColor: `var(--brand-color_${e})` }}
+					key={`${e}-${i}${setId()}`}
+					data-foo={setId()}
+				></div>
+			))}
+		</div>
+	);
+}
