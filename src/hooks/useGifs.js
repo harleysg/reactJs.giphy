@@ -19,5 +19,5 @@ export default function useGifs({ keyWord } = { keyWord: null }) {
 		});
 	}, [keyWordToUse, setGifs, setKeyWord]);
 
-	return { loading, gifs };
+	return { loading, gifs, keyWordUsed: keyWordToUse };
 }
