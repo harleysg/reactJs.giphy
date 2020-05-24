@@ -46,7 +46,7 @@ export default function Search({ handleOutput }) {
 						<>
 							{" "}
 							Results of:
-							<strong> {searched || keyWord}</strong>
+							<strong> {searched || decodeURI(keyWord)}</strong>
 						</>
 					)}
 				</span>
