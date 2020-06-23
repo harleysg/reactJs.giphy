@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "wouter";
 
-import NotFound from "components/NotFound.js";
-import Header from "components/Header.js";
+import NotFound from "components/NotFound/index.js";
+import Header from "components/Header/index.js";
 
 export default function NotFoundPage() {
 	return (

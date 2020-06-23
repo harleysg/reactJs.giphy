@@ -7,10 +7,10 @@ export default function Gif({ title, id, url }) {
 		<Link to={`/gif/${id}`}>
 			<a href className={css["gif-card"]}>
 				<header className={css["gif-card_description"]}>
-					<h4 className={css["gif-card_title"]}>{title}</h4>
 					<h5 className={css["gif-card_title"]}>
 						<small>{id}</small>
 					</h5>
+					<h4 className={css["gif-card_title"]}>{title}</h4>
 				</header>
 				<figure className={css["gif-card_figure"]}>
 					<img

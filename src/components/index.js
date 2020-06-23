@@ -1,10 +1,10 @@
-import Header from "./Header.js";
-import Categories from "./Categories";
-import Gif from "./Gif";
-import GifList from "./GifList";
-import Spinner from "./Spinner";
-import Limit from "./Limit";
-import NotFound from "./NotFound";
-import Search from "./Search";
+import Header from "./Header/index.js";
+import Categories from "./Categories/index.js";
+import Gif from "./Gif/index.js";
+import GifList from "./GifList/index";
+import Spinner from "./Spinner/index";
+import Limit from "./Limit/index";
+import NotFound from "./NotFound/index";
+import Search from "./Search/index";
 
 export { Header, Categories, Gif, GifList, Limit, NotFound, Search, Spinner };

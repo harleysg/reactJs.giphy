@@ -1,5 +1,5 @@
 import React from "react";
-import Gif from "./Gif.js";
+import Gif from "components/Gif/index.js";
 
 import "./GifList.css";
 
