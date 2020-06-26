@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation } from "wouter";
 
-import Header from "components/Header.js";
-import Search from "components/Search.js";
-import GifList, { GifListSkeleton } from "components/GifList.js";
-import Spinner from "components/Spinner";
+import Header from "components/Header/index.js";
+import Search from "components/Search/index.js";
+import GifList, { GifListSkeleton } from "components/GifList/index.js";
+import Spinner from "components/Spinner/index";
 
-import { useGifs } from "hooks/index.js";
+import { useGifs, useNearScreen } from "hooks/index.js";
 
 export default function GifResultPage({ params }) {
 	const { KEYWORD } = params;
-	const { loading, gifs } = useGifs({ keyWord: KEYWORD });
+	const { loading, gifs, setPage } = useGifs({ keyWord: KEYWORD });
 	const [newWord, setkeyWord] = useState(KEYWORD);
 	const [, pushLocation] = useLocation();
-
+	const extRef = useRef();
+	const { isNearScreen } = useNearScreen({extRef: loading ? null : extRef, once: false})
+	
 	useEffect(() => {
 		newWord !== KEYWORD && pushLocation(`/search/${newWord}`);
 	}, [KEYWORD, newWord, pushLocation]);
+	
+	useEffect(() => {
+		isNearScreen && setPage((prevPage) => prevPage + 1)
+	}, [setPage, isNearScreen])
 
-	function handleFilterChange(value) {
-		setkeyWord(value);
-	}
+	const handleFilterChange = useCallback(value => setkeyWord(value), [])
 
 	return (
 		<>
@@ -33,21 +37,18 @@ export default function GifResultPage({ params }) {
 				</div>
 			</Header>
 			<div className="App-wrapper">
-				{<LoadGids isLoading={loading} gifs={gifs} />}
+				{
+					loading
+						? <>
+							<Spinner />
+							<GifListSkeleton />
+						</>
+						: <>
+							<GifList gifs={gifs} />
+							<div id="trackIsNearScreen" ref={extRef}></div>
+						</>
+				}
 			</div>
 		</>
 	);
-}
-
-function LoadGids({ isLoading = false, gifs }) {
-	if (isLoading) {
-		return (
-			<>
-				<Spinner />
-				<GifListSkeleton />
-			</>
-		);
-	} else {
-		return <GifList gifs={gifs} />;
-	}
 }
