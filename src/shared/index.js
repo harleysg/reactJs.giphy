@@ -17,6 +17,7 @@ export const DEFAULT_SEARCH_LIMIT = 25;
 export const DEFAULT_SEARCH_OFFSET = 0;
 
 // Results limits
+export const INITIAL_PAGE = 0;
 export const LIMIT_LOW = 5;
 export const LIMIT_MEDIUM = 25;
 export const LIMIT_HIGH = 100;
@@ -25,9 +26,11 @@ export const LIMITS = [LIMIT_LOW, LIMIT_MEDIUM, LIMIT_HIGH];
 export function URL_GIFs_KEYWORD({
 	keyWord = DEFAULT_SEARCH_TERM,
 	limit = LIMIT_MEDIUM,
-	offset = DEFAULT_SEARCH_OFFSET,
+	page = INITIAL_PAGE,
 }) {
-	return `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyWord}&limit=${limit}&offset=${offset}&rating=G&lang=en`;
+	return `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyWord}&limit=${limit}&offset=${
+		limit * page
+	}&rating=G&lang=en`;
 }
 export function URL_GIFs_ID({ ID }) {
 	return `${API_URL}/${ID}?api_key=${API_KEY}`;
