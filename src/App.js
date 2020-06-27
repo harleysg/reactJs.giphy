@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import Routes from "pages/index.js";
 
@@ -12,7 +12,9 @@ export default function App() {
 		<AppContextProvider value={APP_CONTEXT}>
 			<div className={"App"}>
 				<GifsContextProvider>
-					<Routes />
+					<Suspense fallback={null}>
+						<Routes />
+					</Suspense>
 				</GifsContextProvider>
 			</div>
 		</AppContextProvider>
