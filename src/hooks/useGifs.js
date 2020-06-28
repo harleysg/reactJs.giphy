@@ -16,8 +16,8 @@ export default function useGifs({ keyWord } = { keyWord: null }) {
 		setLoading(true);
 		getGifsByKeyWord({ keyWord: keyWordUsed }).then((gifs) => {
 			setLoading(false);
-			setGifs(gifs);
-			setKeyWord(keyWordUsed);
+            (typeof setGifs == "function") && setGifs(gifs);
+			(typeof setKeyWord == "function") && setKeyWord(keyWordUsed);
 			localStorage.setItem("lastKeyword", keyWordUsed);
 		});
 	}, [keyWordUsed, setGifs, setKeyWord]);
