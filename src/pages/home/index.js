@@ -1,10 +1,6 @@
-import React, { useState, useContext } from "react";
-import { useLocation } from "wouter";
+import React, { useContext } from "react";
 
-import { DEFAULT_SEARCH_TERM } from "shared/index.js";
-
-import { Header, Search, GifList, Spinner } from "components/index";
-import TrendingSearches from "components/TrendingSearches/index";
+import { Header, Search, GifList, Spinner, TrendingSearches } from "components/index";
 
 import { useGifs } from "hooks/index.js";
 import Context from "context/app.context";
@@ -13,14 +9,8 @@ import css from "./Home.module.css";
 
 export default function GifHomePage() {
 	const { name } = useContext(Context);
-	const [, setkeyWord] = useState(DEFAULT_SEARCH_TERM);
-	const [, pushLocation] = useLocation();
 	const { loading, gifs } = useGifs();
-
-	function handleFilterChange(value) {
-		setkeyWord(value);
-		pushLocation(`/search/${value}`);
-	}
+	
 	return (
 		<>
 			<Header>
@@ -34,7 +24,7 @@ export default function GifHomePage() {
 					</div>
 				</div>
 				<div className="App-header_block">
-					<Search handleOutput={handleFilterChange} />
+					<Search />
 				</div>
 			</Header>
 			<div className="App-home">
