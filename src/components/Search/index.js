@@ -15,7 +15,7 @@ function Search() {
   
   const handleSeachChange = useCallback(function (e) {
     sendValue(e.target.value);
-    resetSearch(e.target.value);
+    resetSearch("");
   }, [sendValue, resetSearch])
   
   const handleSubmit = useCallback(function (e) {
@@ -23,12 +23,13 @@ function Search() {
     e.preventDefault();
     if (regx.test(value)) {
       setKeyWord(value);
+      resetSearch(value);
       pushLocation(`/search/${value}`);
       sendValue("");
     } else {
       console.log(`${value} isn´t validate`);
     }
-  }, [pushLocation, setKeyWord, value, sendValue])
+  }, [pushLocation, setKeyWord, value, sendValue, resetSearch])
 
   return (
     <div className="gif-search">
