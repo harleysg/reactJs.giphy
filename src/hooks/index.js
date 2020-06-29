@@ -1,3 +1,5 @@
 import useGifs from "./useGifs.js";
-
-export { useGifs };
+import { useGlobalGifs } from "./useGlobalGifs";
+import { useSingleGif } from "./useSingleGif";
+import useNearScreen from "./useNearScreen";
+export { useGifs, useGlobalGifs, useNearScreen, useSingleGif };

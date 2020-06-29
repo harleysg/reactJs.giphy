@@ -1,4 +1,4 @@
-.foo {
+.sectionScroller {
 	position: sticky;
 	top: calc(var(--height-header) * 1.2);
 	max-width: 300px;
@@ -6,27 +6,28 @@
 	padding-right: 1rem;
 }
 
-.baz {
+.aside {
 	width: 100%;
 	max-width: calc(100% - 300px);
 	float: right;
-	min-height: 170vh;
 }
 
 @media screen and (max-width: 60rem) {
-    .App-home_wrapper {
+	.App-home_wrapper {
 		display: flex;
 		flex-direction: column;
-    }
-    
-	.foo {
+	}
+
+	.sectionScroller {
 		order: 1;
 		max-width: 100%;
 		position: static;
+		margin-top: 50px;
 	}
 
-	.baz {
+	.aside {
 		width: 100%;
 		max-width: 100%;
+		min-height: 130vh;
 	}
 }

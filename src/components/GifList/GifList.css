@@ -1,9 +1,16 @@
+:root{
+	--gridList-column: 250px;
+	--gridList-rows: 250px;
+	--gridList-gap: 6px;
+}
+
 .gif-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	grid-gap: 20px;
+	grid-auto-rows: 210px;
+	grid-gap: var(--gridList-gap);
 	grid-auto-flow: row dense;
 	justify-content: center;
-
 	padding-top: 1rem;
+	min-height: 100vh;
 }
