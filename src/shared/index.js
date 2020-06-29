@@ -8,7 +8,6 @@ export const APP_CONTEXT = {
 
 // URL for giphy search API
 export const API_URL = "https://api.giphy.com/v1";
-export const API_SEARCH_URL = `${API_URL}/gifs/search`;
 
 // Initial search values
 export const DEFAULT_SEARCH_TERM = "";
@@ -32,9 +31,18 @@ export function URL_GIFs_KEYWORD({
 		limit * page
 	}&rating=G&lang=en`;
 }
-export function URL_GIFs_ID({ ID }) {
-	return `${API_URL}/${ID}?api_key=${API_KEY}`;
+export function URL_GIFs_ID({ id }) {
+	return `${API_URL}/gifs/${id}?api_key=${API_KEY}`;
 }
 export function URL_TRANDINGS() {
 	return `${API_URL}/trending/searches?api_key=${API_KEY}`;
+}
+
+export function FILTER_GIF_RESPONSE (data) {
+	return {
+		original: data.images.original.webp || data.images.original.url,
+		url: data.images.preview_webp.url,
+		title: data.title,
+		id: data.id,
+	}
 }
