@@ -11,7 +11,7 @@ export default function Routes() {
 		<Switch>
 			<Route component={HomePage} path="/" />
 			<Route component={ResultPage} path="/search/:KEYWORD" />
-			<Route component={DetailPage} path="/gif/:ID" />
+			<Route component={DetailPage} path="/gif/:id" />
 			<Route component={NotFoundPage} path="/:rest*" />
 		</Switch>
 	);

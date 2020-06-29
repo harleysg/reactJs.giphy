@@ -1,17 +1,21 @@
 import React from "react";
-import { Link } from "wouter";
+import { Link, Redirect } from "wouter";
 
 import Header from "components/Header/index.js";
 import Gif from "components/Gif/index.js";
 
-import { useGlobalGifs } from "hooks/useGlobalGifs";
-
+import { useSingleGif, useGlobalGifs } from "hooks/index.js";
+import { Spinner } from "components/index";
 
 export default function GifDetailPage({ params }) {
-	const { ID } = params;
-	const { gifs, keyWord } = useGlobalGifs();
+	const { id } = params;
+	const { keyWord } = useGlobalGifs();
+	const { gif, isLoading, isError } = useSingleGif({id});
+	
+	if(isLoading) return <Spinner/>
+	if(isError) return <Redirect to="/404"/>
+	if(!gif) return null
 
-	const GetGifById = gifs.find((gif) => gif.id === ID);
 	return (
 		<>
 			<Header>
@@ -22,7 +26,7 @@ export default function GifDetailPage({ params }) {
 				</div>
 			</Header>
 			<div className="App-wrapper">
-				<Gif {...GetGifById} />
+				<Gif id={gif.id} title={gif.title} url={gif.original} />
 			</div>
 		</>
 	);
