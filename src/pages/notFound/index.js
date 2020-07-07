@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Title, Meta } from "react-head";
 import { Link } from "wouter";
 
-import NotFound from "components/NotFound/index.js";
-import Header from "components/Header/index.js";
+import {NotFound, Head, Header} from "components/index.js";
+
+import Context from "context/app.context";
 
 export default function NotFoundPage() {
+	const { name } = useContext(Context);
 	return (
 		<>
+			<Head>
+				<Title>{`Error de navegación | ${name}`}</Title>
+				<Meta name="description" content={`Error de navegación`} />
+			</Head>
 			<Header>
 				<div className="App-header_block">
 					<Link to="/" className="c-link">

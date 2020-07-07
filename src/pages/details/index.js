@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Title, Meta } from "react-head";
 import { Link, Redirect } from "wouter";
 
-import Header from "components/Header/index.js";
-import Gif from "components/Gif/index.js";
+import { Head, Header, Gif, Spinner } from "components/index";
 
 import { useSingleGif, useGlobalGifs } from "hooks/index.js";
-import { Spinner } from "components/index";
+import Context from "context/app.context";
 
 export default function GifDetailPage({ params }) {
 	const { id } = params;
+	const { name } = useContext(Context);
 	const { keyWord } = useGlobalGifs();
 	const { gif, isLoading, isError } = useSingleGif({id});
 	
-	if(isLoading) return <Spinner/>
+	if(isLoading) return (
+		<>
+			<Head>
+				<Title>{`Loading... | ${name}`}</Title>
+			</Head>
+			<Spinner/>
+		</>
+	)
 	if(isError) return <Redirect to="/404"/>
 	if(!gif) return null
 
 	return (
 		<>
+			<Head>
+				<Title>{`${decodeURI(keyWord)} | ${name}`}</Title>
+				<Meta name="description" content={`Detail of ${gif.title}`} />
+			</Head>
 			<Header>
 				<div className="App-header_block">
 					<Link to={`/search/${keyWord}`} className="c-link">

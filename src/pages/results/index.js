@@ -1,26 +1,31 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
+import { Title, Meta } from "react-head";
 import { Link } from "wouter";
 
-import Header from "components/Header/index.js";
-import Search from "components/Search/index.js";
-import GifList, { GifListSkeleton } from "components/GifList/index.js";
-import Spinner from "components/Spinner/index";
+import { Head, Header, Search, Spinner, GifList } from "components/index";
+import { GifListSkeleton } from "components/GifList/index.js";
+
+import Context from "context/app.context";
 
 import { useGifs, useNearScreen } from "hooks/index.js";
 
 export default function GifResultPage({ params }) {
 	const { KEYWORD } = params;
+	const { name } = useContext(Context);
 	const { loading, gifs, setPage } = useGifs({ keyWord: KEYWORD });
 	const extRef = useRef();
 	const { isNearScreen } = useNearScreen({extRef: loading ? null : extRef, once: false})
-	
-	
+
 	useEffect(() => {
 		isNearScreen && setPage((prevPage) => prevPage + 1)
 	}, [setPage, isNearScreen])
 
 	return (
 		<>
+			<Head>
+				<Title>{loading ? "loading..." : `${gifs.length} results of ${decodeURI(KEYWORD)} | ${name}`}</Title>
+				<Meta name="description" content={`${gifs.length} results of ${decodeURI(KEYWORD)}`} />
+			</Head>
 			<Header>
 				<div className="App-header_block">
 					<Search  />

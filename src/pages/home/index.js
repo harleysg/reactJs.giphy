@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
+import { Title, Meta } from "react-head";
 
-import { Header, Search, GifList, Spinner, TrendingSearches } from "components/index";
+import { Head, Header, Search, GifList, Spinner, TrendingSearches } from "components/index";
 
 import { useGifs } from "hooks/index.js";
 import Context from "context/app.context";
@@ -13,6 +14,10 @@ export default function GifHomePage() {
 	
 	return (
 		<>
+			<Head>
+				<Title>{loading ? "loading..." : name}</Title>
+				<Meta name="description" content={`welcome to ${name}`} />
+			</Head>
 			<Header>
 				<div className="App-header_block">
 					<div className="o-brand">
