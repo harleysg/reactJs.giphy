@@ -10,7 +10,7 @@ export default function Routes() {
 	return (
 		<Switch>
 			<Route component={HomePage} path="/" />
-			<Route component={ResultPage} path="/search/:KEYWORD" />
+			<Route component={ResultPage} path="/search/:keyWord/:rating?" />
 			<Route component={DetailPage} path="/gif/:id" />
 			<Route component={NotFoundPage} path="/:rest*" />
 		</Switch>

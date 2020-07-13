@@ -21,15 +21,17 @@ export const LIMIT_LOW = 5;
 export const LIMIT_MEDIUM = 25;
 export const LIMIT_HIGH = 100;
 export const LIMITS = [LIMIT_LOW, LIMIT_MEDIUM, LIMIT_HIGH];
+export const RATINGS = ["g", "pg", "pg-13", "r"];
 
 export function URL_GIFs_KEYWORD({
 	keyWord = DEFAULT_SEARCH_TERM,
 	limit = LIMIT_MEDIUM,
 	page = INITIAL_PAGE,
+	rating = RATINGS[0]
 }) {
 	return `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyWord}&limit=${limit}&offset=${
 		limit * page
-	}&rating=G&lang=en`;
+	}&rating=${rating}&lang=en`;
 }
 export function URL_GIFs_ID({ id }) {
 	return `${API_URL}/gifs/${id}?api_key=${API_KEY}`;
