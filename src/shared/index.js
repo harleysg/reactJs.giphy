@@ -41,9 +41,11 @@ export function URL_TRANDINGS() {
 }
 
 export function FILTER_GIF_RESPONSE (data) {
+	const images = data.images;
+	const image = images.preview_webp || images.preview_gif.url || images["480w_still"];
 	return {
-		original: data.images.original.webp || data.images.original.url,
-		url: data.images.preview_webp.url,
+		original: images.original.webp || images.original.url,
+		url: image.url || "",
 		title: data.title,
 		id: data.id,
 	}
