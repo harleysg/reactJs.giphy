@@ -21,15 +21,17 @@ export const LIMIT_LOW = 5;
 export const LIMIT_MEDIUM = 25;
 export const LIMIT_HIGH = 100;
 export const LIMITS = [LIMIT_LOW, LIMIT_MEDIUM, LIMIT_HIGH];
+export const RATINGS = ["g", "pg", "pg-13", "r"];
 
 export function URL_GIFs_KEYWORD({
 	keyWord = DEFAULT_SEARCH_TERM,
 	limit = LIMIT_MEDIUM,
 	page = INITIAL_PAGE,
+	rating = RATINGS[0]
 }) {
 	return `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyWord}&limit=${limit}&offset=${
 		limit * page
-	}&rating=G&lang=en`;
+	}&rating=${rating}&lang=en`;
 }
 export function URL_GIFs_ID({ id }) {
 	return `${API_URL}/gifs/${id}?api_key=${API_KEY}`;
@@ -39,9 +41,11 @@ export function URL_TRANDINGS() {
 }
 
 export function FILTER_GIF_RESPONSE (data) {
+	const images = data.images;
+	const image = images.preview_webp || images.preview_gif.url || images["480w_still"];
 	return {
-		original: data.images.original.webp || data.images.original.url,
-		url: data.images.preview_webp.url,
+		original: images.original.webp || images.original.url,
+		url: image.url || "",
 		title: data.title,
 		id: data.id,
 	}

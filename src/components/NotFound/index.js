@@ -17,7 +17,7 @@ export default function NotFound() {
 					</div>
 					<img
 						className={css["c-notFound_img"]}
-						src="http://www.supah.it/dribbble/008/008.jpg"
+						src="https://i.giphy.com/media/sU511xfb7ORqw/giphy.webp"
 						alt="demo"
 					/>
 				</div>

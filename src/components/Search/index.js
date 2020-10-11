@@ -1,35 +1,28 @@
-import React, { useContext, useState, useCallback } from "react";
-import { useLocation } from "wouter";
+import React, { useCallback } from "react";
 
-import { REGEX_TERM, DEFAULT_SEARCH_TERM } from "shared/index.js";
-
-import GifsContext from "context/gifs.context";
+import { RATINGS } from "shared/index.js";
+import { useForm } from "./hook.js";
 
 import "./Search.css";
 
 function Search() {
-  const [value, sendValue] = useState("");
-  const { keyWord, setKeyWord } = useContext(GifsContext);
-  const [searched, resetSearch] = useState(DEFAULT_SEARCH_TERM);
-  const [, pushLocation] = useLocation();
-  
+  const {
+    searched,
+    rating,
+    value,
+    updateValue,
+    updateRating,
+    handleSubmit,
+    keyWord,
+  } = useForm();
+
   const handleSeachChange = useCallback(function (e) {
-    sendValue(e.target.value);
-    resetSearch("");
-  }, [sendValue, resetSearch])
-  
-  const handleSubmit = useCallback(function (e) {
-    const regx = new RegExp(REGEX_TERM);
-    e.preventDefault();
-    if (regx.test(value)) {
-      setKeyWord(value);
-      resetSearch(value);
-      pushLocation(`/search/${value}`);
-      sendValue("");
-    } else {
-      console.log(`${value} isn´t validate`);
-    }
-  }, [pushLocation, setKeyWord, value, sendValue, resetSearch])
+    updateValue(e.target.value);
+  }, [updateValue]);
+
+  const handleSelectRating = useCallback((e) => {
+    updateRating(e.target.value);
+  }, [updateRating]);
 
   return (
     <div className="gif-search">
@@ -43,19 +36,26 @@ function Search() {
             placeholder="Search all the GIFs and Stickers + Enter"
             onChange={handleSeachChange}
           />
+          <select value={rating} onChange={handleSelectRating}>
+            {RATINGS.map((rating) => (
+              <option key={rating}>{rating}</option>
+            ))}
+          </select>
         </label>
-        <span className="gif-searched">
-          {keyWord && (
-            <>
-              {" "}
-              Results of:
-              <strong> {searched || decodeURI(keyWord)}</strong>
-            </>
-          )}
-        </span>
+        <label className="gif-search_field">
+          <span className="gif-searched">
+            {keyWord && (
+              <>
+                {" "}
+                Results of:
+                <strong> {searched || decodeURI(keyWord)}</strong>
+              </>
+            )}
+          </span>
+        </label>
       </form>
     </div>
   );
 }
 
-export default  React.memo(Search)
+export default React.memo(Search);
