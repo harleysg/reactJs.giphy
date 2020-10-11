@@ -19,11 +19,32 @@
 }
 
 .App-header_wrapper {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr minmax(4rem, max-content);
+    gap: 0.5rem;
 }
 .App-header_block {
 	display: flex;
 	flex-direction: column;
 	min-width: 100px;
+}
+
+.App-header-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.App-user-field {
+    padding: 0 0.5rem;
+    display: grid;
+    box-shadow: -1px 0 0 0 #cdd4de4f;
+}
+
+.App-user-field a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--theme-body-txt-dark);
+    text-decoration: none;
 }

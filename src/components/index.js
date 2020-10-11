@@ -8,8 +8,10 @@ import NotFound from "./NotFound/index";
 import Search from "./Search/index";
 import TrendingSearches from "./TrendingSearches/index";
 import { Head } from "./Head/index"
+import Brand from "./Brand/index"
 
 export {
+    Brand,
     Categories,
     Gif,
     GifList,
