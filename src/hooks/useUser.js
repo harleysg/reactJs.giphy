@@ -2,10 +2,10 @@ import { useContext, useCallback, useState } from "react";
 
 import Context from "context/user.context";
 
-import { loginService } from "service/loginService";
+import { loginService, addFavService } from "service/index";
 
 export default function useUser() {
-  const { jwt, setJWT } = useContext(Context);
+  const { jwt, setJWT, favs, setFavs } = useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
 
   const handleLogin = useCallback(
@@ -13,7 +13,7 @@ export default function useUser() {
       setState({ loading: true, error: false });
 
       loginService({ username, password })
-        .then((jwt) => {
+        .then(({ jwt }) => {
           window.sessionStorage.setItem("jwt", jwt);
           setState({ loading: false, error: false });
           setJWT(jwt);
@@ -27,10 +27,20 @@ export default function useUser() {
     [setJWT, jwt]
   );
 
-  const logout = useCallback(() => {
-    window.sessionStorage.removeItem("jwt", jwt);
-    setJWT(null);
-  }, [setJWT, jwt]);
+  const addFav = useCallback(({ id }) => addFavService({ id, jwt }).then(setFavs).catch(console.error), [setFavs, jwt]);
 
-  return { isLogged: Boolean(jwt), login: handleLogin, logout, loginLoading: state.loading, loginError: state.error };
+  const logout = useCallback(() => {
+    window.sessionStorage.removeItem("jwt");
+    setJWT(null);
+  }, [setJWT]);
+
+  return {
+    addFav,
+    favs,
+    isLogged: Boolean(jwt),
+    handleLogin,
+    logout,
+    loginLoading: state.loading,
+    loginError: state.error,
+  };
 }
