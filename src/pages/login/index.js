@@ -16,7 +16,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const [, navigate] = useLocation();
-  const { login: handleLogin, isLogged, loginLoading, loginError } = useUser();
+  const { handleLogin, isLogged, loginLoading, loginError } = useUser();
 
   useEffect(() => {
     if (isLogged) navigate("/");
